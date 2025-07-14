@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRALI'S HOME BAKERY</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    
+    <!--header section-->
+    <header class="header">
+        <div class="logo">VIRALI'S HOME BAKERY</div>
+        <nav class="navbar" id="navbar">
+            <a href="index.html">Home</a>
+            <a href="#">Menu</a>
+            <a href="custom-order.html">Custom Order</a>
+            <a href="cart.html">Cart</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    </header>
+
+    <!--hero section-->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Delicious Homemade Cakes</h1>
+            <p>Baked With Love, Just For You</p>
+            <a href="#" class="btn-order">Order Now</a>
+        </div>
+        <div class="hero-image">
+            <img src="herocake.png" alt="Cake">
+        </div>
+    </section>
+
+    <!--bestsellers section-->
+    <section class="bestsellers">
+        <h2>Our Bestsellers</h2>
+        <div class="cake-grid">
+            <!--card 1-->
+            <div class="cake-card">
+                <img src="herocake.png" alt="Bento cake">
+                <h3>Chocolate Bento Cake</h3>
+                <p>$499</p>
+                <a href="#" class="btn-order" onclick="addToCart('chocolate bento cake', 499)">Add to Cart</a>
+            </div>
+
+            <!--card 2-->
+            <div class="cake-card">
+                <img src="herocake.png" alt="Jar Cake">
+                <h3>Jar Cake</h3>
+                <p>$249</p>
+                <a href="#" class="btn-order" onclick="addToCart('jar cake', 249)">Add to Cart</a>
+            </div>
+
+            <!--card 3-->
+            <div class="cake-card">
+                <img src="herocake.png" alt="Custom Cake">
+                <h3>Custom Theme Cake</h3>
+                <p>From $799</p>
+                <a href="custom-order.html" class="btn-order">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!--custom order section-->
+    <section class="custom-order">
+        <div class="custom-order-content">
+            <h2>Your Cake, Your Way</h2>
+            <p>Want Something Special? Choose Flavors, Colors, Themes And More.</p>
+            <a href="#" class="btn-order">Place Custom Order</a>
+        </div>
+    </section>
+
+    <!--testimonials section-->
+    <section class="testimonials">
+        <h2>What Our Customers Say...</h2>
+        <div class="review-grid">
+            <!--review 1-->
+            <div class="review-card">
+                <p>"The bento cake was super cute and tasted amazing!"</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>--Ayesha</h4>
+            </div>
+
+            <!--review 2-->
+            <div class="review-card">
+                <p>"Ordered a jar cake set for rakhi -- everyone loved it!"</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>--Rohan</h4>
+            </div>
+
+            <!--review 3-->
+            <div class="review-card">
+                <p>"Custom cake tured out exactly how i imagined it. thank you!"</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>--Meera</h4>
+            </div>
+        </div>
+    </section>
+
+    <!--contact section-->
+    <section class="contact">
+        <h2>Get In Touch</h2>
+        <p>Have a question or want to place an order directly?</p>
+        <div class="contact-links">
+            <a href="#" class="whatsapp" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>Whatsapp
+            </a>
+            <a href="#" class="instagram" target="_blank">
+                <i class="fa-brands fa-instagram"></i>Instagram
+            </a>
+        </div>
+    </section>
+
+    <!--footer-->
+    <footer class="footer">
+        <p>&copy;2025 VIRALI'S HOME BAKERY. All rights reserved.</p>
+    </footer>
+
+<script src="script.js"></script> 
+<script src="cart.js"></script>   
+</body>
+</html>
