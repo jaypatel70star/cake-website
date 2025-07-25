@@ -38,7 +38,7 @@ h1, h2, h3 {
 .navbar {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 1rem;
 }
 
 .navbar a {
@@ -110,15 +110,18 @@ h1, h2, h3 {
         background-color: #ffe4eb;
         position: absolute;
         top: 60px;
-        right: 20px;
+        right: 10px;
+        width: 200px;
         padding: 10px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        z-index: 10;
     }
     .navbar.active {
         display: flex;
     }
     .menu-toggle {
-        display: flex;
+        display: block;
+        font-size: 24px;
         color: #7a3040;
     }
 }
