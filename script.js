@@ -17,6 +17,13 @@ function toggledropdown(e) {
     accountMenu.classList.toggle("show-dropdown");
 }
 
+const menutoggle = document.getElementById("menu-toggle");
+const navbar = getElementById("navbar");
+
+menutoggle.addEventListener("click", () => {
+    navbar.classList.toggle("active");
+});
+
 document.addEventListener("click", function (e) {
     if(!this.document.getElementById("account-dropdown").contains(e.target)) {
         accountMenu.classList.remove("show-dropdown");
