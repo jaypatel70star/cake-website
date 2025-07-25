@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin panel - VIRALI'S BAKERY</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #fff0f5;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #b84c5b;
+        }
+        .order {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .order h3 {
+            margin: 4px 0;
+            padding-left: 0;
+        }
+        .order ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .order ul li {
+            padding: 4px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .clear-btn {
+            background: #ffcccc;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: #7a3040;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .clear-btn:hover {
+            background: #ffb3b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Admin Panel - Orders</h1>
+    <div id="order-list"></div>
+    <button onclick="clearOrders()" class="clear-btn">Clear All Orders</button>
+
+
+
+<script>
+    const orders = JSON.parse(localStorage.getItem("cakeCart")) || [];
+    const orderList = document.getElementById("order-list");
+    function renderOrders() {
+        orderList.innerHTML = "";
+        if(orders.length === 0) {
+            orderList.innerHTML = "<p>No Orders Found.</p>";
+            return;
+        }
+        const orderBox = document.createElement("div");
+        orderBox.className = "order";
+        let total = 0;
+        const ul = document.createElement("ul");
+        orders.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${item.qty} * ${item.name} - ${item.price * item.qty}`;
+            ul.appendChild(li);
+            total += item.price * item.qty;
+        });
+        const totaldisplay = document.createElement("div");
+        totaldisplay.className = "total";
+        totaldisplay.textContent = `Total : ${total}`;
+
+        orderBox.appendChild(ul);
+        orderBox.appendChild(totaldisplay);
+        orderBox.appendChild(orderBox);
+    }
+    function clearOrders() {
+        localStorage.removeItem("cakeCart");
+        alert("All orders Cleared!");
+        renderOrders();
+    }
+    renderOrders();
+</script>
+</body>
+</html>

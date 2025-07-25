@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRALI'S HOME BAKERY</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap">
+</head>
+<body>
+    
+    <!--header section-->
+    <header class="header">
+        <div class="logo">VIRALI'S HOME BAKERY</div>
+        <nav class="navbar" id="navbar">
+            <a href="index.html">Home</a>
+            <a href="#">Menu</a>
+            <a href="custom-order.html">Custom Order</a>
+            <a href="cart.html">Cart</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <div class="account-dropdown" id="account-dropdown">
+                <a class="account-btn" href="#" onclick="toggledropdown()">Account
+                    <i class="fa-solid fa-caret-down"></i>
+                </a>
+                <div class="account-menu" id="account-menu"></div>
+            </div>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    </header>
+
+    <!--hero section-->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Delicious Homemade Cakes</h1>
+            <p>Baked With Love, Just For You</p>
+            <a href="https://wa.me/7490831269?text=Hi! Want to order a chocolate cake!" class="btn-order">Order Now</a>
+        </div>
+        <div class="hero-image">
+            <img src="herocake.png" alt="Cake" loading="lazy">
+        </div>
+    </section>
+
+    <!--festive offer banner-->
+    <section class="festive-offer">
+        <h2>Raksha Bandhan Special Offer</h2>
+        <p>Use Coupon <strong>RAKHI20</strong> for 20% OFF on orders above 799!</p>
+        <a href="custom-order.html" class="btn-order">Order Now</a>
+    </section>
+
+    <!--bestsellers section-->
+    <section class="bestsellers">
+        <h2>Our Bestsellers</h2>
+        <div class="filter-bar">
+            <label for="filter">Filter by Flavour : </label>
+            <select id="filter" onchange="filterCakes()">
+                <option value="all">All</option>
+                <option value="chocolate">Chocolate</option>
+                <option value="strawberry">Strawberry</option>
+                <option value="venilla">Venilla</option>
+            </select>
+        </div>
+        <div class="cake-grid">
+            <!--card 1-->
+            <div class="cake-card" data-type="chocolate">
+                <img src="herocake.png" alt="Bento cake">
+                <h3>Chocolate Bento Cake</h3>
+                <p>499</p>
+                <a href="#" class="btn-order" onclick="addToCart('chocolate bento cake', 499)">Add to Cart</a>
+            </div>
+
+            <!--card 2-->
+            <div class="cake-card" data-type="strawberry">
+                <img src="herocake.png" alt="Jar Cake">
+                <h3>Jar Cake</h3>
+                <p>249</p>
+                <a href="#" class="btn-order" onclick="addToCart('jar cake', 249)">Add to Cart</a>
+            </div>
+
+            <!--card 3-->
+            <div class="cake-card" data-type="chocolate">
+                <img src="herocake.png" alt="Bounty chocolate">
+                <h3>Bounty Chocolate</h3>
+                <p>From 799</p>
+                <a href="#" class="btn-order" onclick="addToCart('bounty chocolate', 799)">Add to Cart</a>
+            </div>
+        </div>
+    </section>
+
+    <!--custom order section-->
+    <section class="custom-order">
+        <div class="custom-order-content">
+            <h2>Your Cake, Your Way</h2>
+            <p>Want Something Special? Choose Flavors, Colors, Themes And More.</p>
+            <a href="custom-order.html" class="btn-order" target="_blank">Place Custom Order</a>
+        </div>
+    </section>
+
+    <!--testimonials section-->
+    <section class="testimonials">
+        <h2>What Our Customers Say...</h2>
+        <div class="review-grid">
+            <!--review 1-->
+            <div class="review-card">
+                <p>"The bento cake was super cute and tasted amazing!"</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>--Ayesha</h4>
+            </div>
+
+            <!--review 2-->
+            <div class="review-card">
+                <p>"Ordered a jar cake set for rakhi -- everyone loved it!"</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>--Rohan</h4>
+            </div>
+
+            <!--review 3-->
+            <div class="review-card">
+                <p>"Custom cake tured out exactly how i imagined it. thank you!"</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>--Meera</h4>
+            </div>
+        </div>
+    </section>
+
+    <!--contact section-->
+    <section class="contact">
+        <h2>Get In Touch</h2>
+        <p>Have a question or want to place an order directly?</p>
+        <div class="contact-links">
+            <a href="#" class="whatsapp" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>Whatsapp
+            </a>
+            <a href="https://instagram.com/cake_by_virali" class="instagram" target="_blank">
+                <i class="fa-brands fa-instagram"></i>Instagram
+            </a>
+        </div>
+    </section>
+
+    <!--footer-->
+    <footer class="footer">
+        <p>&copy;2025 VIRALI'S HOME BAKERY. All rights reserved.</p>
+    </footer>
+
+    <a href="https://wa.me/7490831269" class="whatsapp-float" target="_blank">
+        <img src="whatsapp.png" alt="whatsapp">
+    </a>
+
+<script src="script.js"></script> 
+<script src="cart.js"></script>   
+<script>
+    function filterCakes() {
+        const type = document.getElementById("filter").value;
+        const cards = document.querySelectorAll(".cake-card");
+        cards.forEach(card => {
+            const cardType = card.getAttribute("data-type");
+            card.style.display = (type === "all" || cardType === type) ? "block" : "none";
+        });
+    }
+</script>
+</body>
+</html>

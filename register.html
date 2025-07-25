@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - VIRALI'S BAKERY</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .register-box {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 16px;
+            background: #fff0f5;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .register-box h2 {
+            color: #b84c5b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .register-box input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .register-box button {
+            width: 100%;
+            padding: 12px;
+            background: #ff6e8c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .register-box button:hover {
+            background: #e25a6a;
+        }
+        .register-msg {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #7a3040;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="register-box">
+        <h2>Create Your Account</h2>
+        <input type="text" id="newuser" placeholder="Choose a username">
+        <input type="password" id="newpass" placeholder="Choose a password">
+        <button onclick="register()">Register</button>
+        <div class="register-msg" id="register-msg"></div>
+        <p style="text-align:center; margin-top:10px;">
+            Already have an account?
+            <a href="login.html">Login Here</a>
+        </p>
+    </div>
+
+
+<script>
+    function register() {
+        const newUser = document.getElementById("newuser").value;
+        const newPass = document.getElementById("newpass").value;
+
+        if(newUser && newPass) {
+            localStorage.setItem("user_" + newUser, newPass);
+            document.getElementById("register-msg").innerText = "Account Created!";
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 2000);
+        } else {
+            document.getElementById("register-msg").innerText = "Please fill all fields.";
+        }
+    }
+</script>
+</body>
+</html>
