@@ -23,3 +23,12 @@ document.addEventListener("click", function(e) {
         accountMenu.classList.remove("show-dropdown");
     }
 });
+
+//cake menu
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("menu-button").addEventListener("click", function (e) {
+    e.preventDefault();
+    const menusection = document.getElementById("cake-menu");
+    menusection.classList.toggle("hidden");
+    });
+});
