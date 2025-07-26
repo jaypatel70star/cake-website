@@ -119,30 +119,27 @@
     </section>
 
     <!--testimonials section-->
-    <section class="testimonials">
+    <section class="testimonials" id="testimonials">
         <h2>What Our Customers Say...</h2>
-        <div class="review-grid">
-            <!--review 1-->
-            <div class="review-card">
-                <p>"The bento cake was super cute and tasted amazing!"</p>
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <h4>--Ayesha</h4>
-            </div>
-
-            <!--review 2-->
-            <div class="review-card">
-                <p>"Ordered a jar cake set for rakhi -- everyone loved it!"</p>
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <h4>--Rohan</h4>
-            </div>
-
-            <!--review 3-->
-            <div class="review-card">
-                <p>"Custom cake tured out exactly how i imagined it. thank you!"</p>
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <h4>--Meera</h4>
-            </div>
+        <div class="testimonial-form">
+            <form id="testimonialform">
+                <label for="stars">Rating</label>
+                <select id="stars" required>
+                    <option value="">Choose</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select><br>
+                <label for="message">Message</label><br>
+                <textarea id="message" rows="3" required></textarea><br>
+                <label for="name">Your name</label><br>
+                <input type="text" id="name" required><br>
+                <button type="submit">Submit Review</button>
+            </form>
         </div>
+        <div class="testimonial-list" id="testimonial-list"></div>
     </section>
 
     <!--contact section-->
