@@ -95,6 +95,20 @@ h1, h2, h3 {
         display: block;
     } */
 
+.dropdown-content {
+    display: none;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.show-dropdown {
+    display: block;
+}
+
 /*mobile menu toggle*/
 .menu-toggle {
     display: none;
