@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - VIRALI'S BAKERY</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    
+<!--header section-->
+<header class="header">
+  <div class="logo">VIRALI'S HOME BAKERY</div>
+  <nav class="navbar" id="navbar">
+      <a href="index.html">Home</a>
+      <a href="#" id="menu-button">Menu</a>
+      <a href="custom-order.html">Custom Order</a>
+      <a href="cart.html">Cart</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <div class="dropdown" id="account-dropdown">
+          <a class="account-btn" href="#" onclick="toggledropdown(event)">Account<i class="fa-solid fa-caret-down"></i></a>
+          <div class="dropdown-content" id="account-menu"></div>
+      </div>
+  </nav>
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+</header>
+
+  <form action="https://formsubmit.co/monparajayashokbhai2004@gmail.com" method="post">
+    <input type="hidden" name="cart-details" id="cart-details">
+    <section class="cart">
+      <h2>Your Cart</h2>
+      <div class="cart-box">
+        <div id="cart-items"></div>
+        <p id="total-price"></p>
+        <!-- <a href="#" id="whatsapp-btn" class="btn-order" type="submit">Place Order On WhatsApp</a> -->
+        <button type="submit" id="whatsapp-btn" class="btn-order">Place Order</button>
+        <button onclick="clearCart()" class="btn-clear">Clear All</button>
+      </div>
+    </section>
+  </form>
+    
+
+    <a href="https://wa.me/7490831269" class="whatsapp-float" target="_blank">
+      <img src="whatsapp.png" alt="whatsapp">
+  </a>
+
+
+  <script src="script.js"></script>
+  <script>
+    const loggedinUser = localStorage.getItem("user");
+
+    if(!loggedinUser) {
+      alert("Please log in to view your cart.");
+      window.location.href = "login.html";
+    }
+    let cart = JSON.parse(localStorage.getItem("cakeCart")) || [];
+  
+    function renderCart() {
+      const cartdiv = document.getElementById("cart-items");
+      const totaldisplay = document.getElementById("total-price");
+      cartdiv.innerHTML = "";
+  
+      let total = 0;
+      let discountText = "";
+      let discount = 0;
+  
+      if (cart.length === 0) {
+        cartdiv.innerHTML = "<p>Your Cart is Empty.</p>";
+        totaldisplay.innerHTML = "";
+        document.getElementById("whatsapp-btn").href = "#";
+        return;
+      }
+  
+      const list = document.createElement("ul");
+      list.className = "cart-list";
+  
+      cart.forEach((item, index) => {
+        total += item.price * (item.qty || 1);
+  
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <div class="item-left">${item.name}</div>
+          <div class="item-center">${item.price}</div>
+          <div class="item-right">
+            <button onclick="changeQty(${index}, -1)" class="qty-btn">-</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQty(${index}, 1)" class="qty-btn">+</button>
+            <button onclick="removeItem(${index})" class="btn-remove"><i class="fa-solid fa-xmark"></i></button>
+          </div>`;
+        list.appendChild(li);
+      });
+  
+      // Auto apply coupon
+      if (total >= 799) {
+        discount = Math.round(total * 0.20); // 20% off
+        discountText = `<p style="color:green; font-weight:bold;">Coupon RAKHI20 applied! You saved ₹${discount}</p>`;
+      }
+  
+      const finalAmount = total - discount;
+      cartdiv.appendChild(list);
+      totaldisplay.innerHTML = `${discountText}<strong>Total after discount: ₹${finalAmount}</strong>`;
+  
+      // WhatsApp message
+      const message = cart.map(item =>
+        `${item.name} x ${item.qty || 1} - ₹${item.price * (item.qty || 1)}`
+      ).join('%0A') + `%0A%0ASubtotal: ₹${total}%0ACoupon Applied: ₹${discount}%0ATotal: ₹${finalAmount}`;
+  
+      const whatsappnumber = "7490831269";
+      document.getElementById("whatsapp-btn").href = `https://wa.me/${whatsappnumber}?text=${message}`;
+    }
+  
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cakeCart", JSON.stringify(cart));
+      renderCart();
+    }
+  
+    function clearCart() {
+      localStorage.removeItem("cakeCart");
+      cart = [];
+      renderCart();
+    }
+  
+    function changeQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty < 1) {
+        cart.splice(index, 1);
+      }
+      localStorage.setItem("cakeCart", JSON.stringify(cart));
+      renderCart();
+    }
+  
+    renderCart();
+
+    document.querySelector("form").addEventListener("submit", function (e) {
+  const cartDetailsInput = document.getElementById("cart-details");
+
+  const message = cart.map(item =>
+    `${item.name} x ${item.qty || 1} - ₹${item.price * (item.qty || 1)}`
+  ).join('\n');
+
+  let total = cart.reduce((acc, item) => acc + item.price * (item.qty || 1), 0);
+  let discount = total >= 799 ? Math.round(total * 0.20) : 0;
+  let finalAmount = total - discount;
+
+  cartDetailsInput.value = `${message}\n\nSubtotal: ₹${total}\nCoupon Applied: ₹${discount}\nTotal: ₹${finalAmount}`;
+});
+
+  </script>
+</body>
+</html>
