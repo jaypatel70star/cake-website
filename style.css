@@ -371,7 +371,20 @@ h1, h2, h3 {
 
 @media(max-width: 600px) {
     .cake-grid {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        padding: 10px;
+    }
+
+    .cake-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .cake-card img {
+        height: 120px;
+        object-fit: cover;
     }
 }
 
