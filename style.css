@@ -379,12 +379,16 @@ h1, h2, h3 {
 
     .cake-card {
         width: 100%;
-        height: 200px;
+        height: auto;
     }
 
     .cake-card img {
-        height: 120px;
-        object-fit: cover;
+        height: auto;
+        width: 100%;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 10px;
     }
 }
 
