@@ -167,6 +167,7 @@ h1, h2, h3 {
     width: 220px;
     box-sizing: border-box;
     text-align: center;
+    cursor: pointer;
 }
 
 @media(max-width: 600px) {
