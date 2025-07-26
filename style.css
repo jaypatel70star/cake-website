@@ -333,7 +333,7 @@ h1, h2, h3 {
     border-radius: 16px;
     padding: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    width: 250px;
+    width: 90%;
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
