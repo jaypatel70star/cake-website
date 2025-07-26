@@ -140,6 +140,41 @@ h1, h2, h3 {
     }
 }
 
+/*cake menu*/
+.hidden {
+    display: none;
+}
+
+#cake-menu {
+    background: #fff0f5;
+    padding: 20px;
+    text-align: center;
+}
+
+.cake-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cake-item {
+    background: #ffe4ec;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    width: 220px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+@media(max-width: 600px) {
+    .cake-item {
+        width : 90%;
+    }
+}
+
 /*hero section*/
 .hero {
     display: flex;
