@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
+
+    <!--header section-->
+    <header class="header">
+        <div class="logo">VIRALI'S HOME BAKERY</div>
+        <nav class="navbar" id="navbar">
+            <a href="index.html">Home</a>
+            <a href="#" id="menu-button">Menu</a>
+            <a href="custom-order.html">Custom Order</a>
+            <a href="cart.html">Cart</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <div class="dropdown" id="account-dropdown">
+                <a class="account-btn" href="#" onclick="toggledropdown(event)">Account<i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-content" id="account-menu"></div>
+            </div>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    </header>
     
     <section class="cart">
       <h2>Your Cart</h2>
@@ -23,7 +41,7 @@
       <img src="whatsapp.png" alt="whatsapp">
   </a>
 
-
+  <script src="script.js"></script>
   <script>
     const loggedinUser = localStorage.getItem("user");
 
