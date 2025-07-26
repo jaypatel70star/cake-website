@@ -409,6 +409,25 @@ h1, h2, h3 {
     font-size: 1rem;
 }
 
+/*---mobile responsiveness---*/
+@media(max-width : 600px) {
+    .testimonials h2 {
+        font-size: 1.5rem;
+    }
+
+    .testimonial-form {
+        padding: 20px;
+    }
+
+    .testimonial {
+        padding: 15px 18px;
+    }
+
+    .testimonial-form button {
+        font-size: 1rem;
+    }
+}
+
 /*contact section*/
 .contact {
     padding: 50px 20px;
