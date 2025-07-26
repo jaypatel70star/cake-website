@@ -32,3 +32,45 @@ document.addEventListener("DOMContentLoaded", function() {
     menusection.classList.toggle("hidden");
     });
 });
+
+//testimonials
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("testimonialform");
+    const list = document.getElementById("testimonial-list");
+
+    // Load existing from localStorage
+    const stored = JSON.parse(localStorage.getItem("testimonials")) || [];
+    stored.forEach(addTestimonialToDOM);
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const stars = document.getElementById("stars").value;
+        const message = document.getElementById("message").value;
+        const name = document.getElementById("name").value;
+
+        if (!stars || !message || !name) {
+            alert("Please fill all fields");
+            return;
+        }
+
+        const testimonial = { stars, message, name };
+        addTestimonialToDOM(testimonial);
+
+        stored.push(testimonial);
+        localStorage.setItem("testimonials", JSON.stringify(stored));
+
+        form.reset();
+    });
+
+    function addTestimonialToDOM({ stars, message, name }) {
+        const div = document.createElement("div");
+        div.className = "testimonial";
+        div.innerHTML = `
+            <p>${"⭐".repeat(stars)}</p>
+            <p>${message}</p>
+            <strong>— ${name}</strong>
+        `;
+        list.prepend(div); // latest on top
+    }
+});
