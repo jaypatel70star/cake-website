@@ -43,6 +43,15 @@ function logout() {
     window.location.href = "login.html";
 }
 
+document.addEventListener("click", function(e) {
+    const profiledropdown = document.getElementById("profile-dropdown");
+    const profilelink = document.getElementById("profile-link");
+
+    if(profiledropdown.classList.contains("show") && !profiledropdown.contains(e.target) && !profilelink.contains(e.target)) {
+        profiledropdown.classList.remove("show");
+    }
+});
+
 //cake menu
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("menu-button").addEventListener("click", function (e) {
