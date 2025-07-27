@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Oreder - VIRALI'S HOME BAKERY</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    
+   <!--header section-->
+   <header class="header">
+    <div class="logo">VIRALI'S HOME BAKERY</div>
+    <nav class="navbar" id="navbar">
+        <a href="index.html">Home</a>
+        <a href="#" id="menu-button">Menu</a>
+        <a href="custom-order.html">Custom Order</a>
+        <a href="cart.html">Cart</a>
+        <a href="about.html">About</a>
+        <a href="#con">Contact</a>
+        <a href="#" id="profile-link">Profile <i class="fa-solid fa-caret-down"></i></a>
+    </nav>
+    <div class="dropdown-content" id="profile-dropdown"></div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+</header>
+
+    <section class="custom-form">
+        <h2>Place a Custom Cake Order</h2>
+        <form action="https://formsubmit.co/monparajayashokbhai2004@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="tel" name="phone" placeholder="Whatsapp Number" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="date" name="delivery_date" required>
+
+            <select name="cake_type" required>
+                <option value="">Select Cake Type</option>
+                <option value="Bento Cake">Bento Cake</option>
+                <option value="Jar Cake">Jar Cake</option>
+                <option value="Theme Cake">Theme Cake</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="text" name="flavour" placeholder="Flavour(e.g. Chocolate, Vanilla)" required>
+            <textarea name="message" rows="4" placeholder="Any message, theme or custom details..."></textarea>
+            <button type="submit">Submit Order</button>
+        </form>
+    </section>
+
+    <a href="https://wa.me/7490831269" class="whatsapp-float" target="_blank">
+        <img src="whatsapp.png" alt="whatsapp">
+    </a>
+
+
+<script src="script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const userdata = JSON.parse(localStorage.getItem("user"));
+        const form = document.querySelector(".custom-form form");
+
+        if(!userdata || !userdata.city || userdata.city.toLowerCase() != "bhavnagar") {
+            form.innerHTML = `<p style="color:red; font-weight:bold;">Sorry, we only deliver in Bhavnagar city.</p><p>If you are from Bhavnagar, please <a href="login.html">Log In</a> again with correct details.</p>`;
+        }
+    });
+</script>
+</body>
+</html>
