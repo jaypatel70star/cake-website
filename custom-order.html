@@ -57,7 +57,7 @@
         const userdata = JSON.parse(localStorage.getItem("user"));
         const form = document.querySelector(".custom-form form");
 
-        if(!userdata || !userdata.city || userdata.city.toLowerCase() != "bhavnagar") {
+        if(!userdata || !userdata.city || userdata.city.toLowerCase() !== "bhavnagar") {
             form.innerHTML = `<p style="color:red; font-weight:bold;">Sorry, we only deliver in Bhavnagar city.</p><p>If you are from Bhavnagar, please <a href="login.html">Log In</a> again with correct details.</p>`;
         }
     });
