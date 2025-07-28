@@ -157,7 +157,7 @@ function placeOrder(e) {
     const userdata = JSON.parse(localStorage.getItem("user") || "{}");
     const city = userdata.city?.toLowerCase();
 
-    if(city !== "bhavnagar") {
+    if(city.ToLowerCase() !== "bhavnagar") {
       e.preventDefault();
       alert("Sorry, we only deliver in Bhavnagar city.");
       return false;
